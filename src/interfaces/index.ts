@@ -14,7 +14,7 @@ export interface PodcastInformation {
   itunesId: number;
   trendScore: number;
   language: number;
-  categories: Categories;
+  categories: CategoriesInterface;
 }
 
 export interface SortComponent {
@@ -27,7 +27,7 @@ export interface PodcastInformationList {
 }
 
 export interface NavbarInterface {
-  handleSearch(searchPodcast: string): any;
+  handleSearch(): any;
   podcasts: any;
   categories: any;
   createHandleMenuClick: any;
@@ -36,4 +36,8 @@ export interface NavbarInterface {
   setSearchPodcast(searchPodcast: string): any;
   click: boolean | undefined;
   handleClick(): any;
+}
+
+export interface CategoriesInterface {
+  [key: string]: string;
 }

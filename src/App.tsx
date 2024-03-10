@@ -1,9 +1,9 @@
+import { Context } from "./Context.js";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import { Context } from "./Context.js";
 import podcastData from "./podcasts.json";
 import PodcastsCards from "./components/PodcastsCards";
-import SortAlphabetical from "./components/SortAlphabetical";
+import { CategoriesInterface } from "./interfaces/index.js";
 
 const App = () => {
   const [context, setContext] = useState(podcastData);
@@ -12,11 +12,19 @@ const App = () => {
   const [categories, setCategories] = useState<any>({});
   const [searchPodcast, setSearchPodcast] = useState<string>("");
 
+  useEffect(() => {
+    let obj: CategoriesInterface = {};
+    const listCategories = podcasts.map((elem: any) => elem.categories);
+    listCategories.forEach((elem: any) => Object.assign(obj, elem));
+    setCategories(obj);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleClick = () => {
-    click === null ? setClick(true) : setClick(!click);
+    click === undefined ? setClick(true) : setClick(!click);
   };
 
-  const handleClickSearch = (searchPodcast: string) => {
+  const handleClickSearch = () => {
     const results = context.filter((elem: any) => {
       if (searchPodcast === "") return setPodcasts([]);
       return elem.title.toLowerCase().includes(searchPodcast.toLowerCase());
@@ -27,31 +35,6 @@ const App = () => {
       setPodcasts([]);
     }
   };
-
-  useEffect(() => {
-    if (click != null) {
-      if (click) {
-        let sortAZ = context.sort((a: any, b: any) =>
-          a.title.localeCompare(b.title)
-        );
-        setPodcasts(sortAZ);
-      } else {
-        let sortZA = context.sort((a: any, b: any) =>
-          b.title.localeCompare(a.title)
-        );
-        setPodcasts(sortZA);
-      }
-    }
-  }, [click, podcasts]);
-
-  useEffect(() => {
-    let obj: any = {};
-    const listCategories = podcasts.map((elem: any) => elem.categories);
-    listCategories.forEach((elem: any) => {
-      Object.assign(obj, elem);
-    });
-    setCategories(obj);
-  }, [podcasts]);
 
   const createHandleMenuClick = (menuItem: string) => {
     let array: any = [];
@@ -69,6 +52,23 @@ const App = () => {
     setPodcasts(context);
     setSearchPodcast("");
   };
+
+  useEffect(() => {
+    if (click != null) {
+      if (click) {
+        let sortAZ = context.sort((a: any, b: any) =>
+          a.title.localeCompare(b.title)
+        );
+        setPodcasts(sortAZ);
+      } else {
+        let sortZA = context.sort((a: any, b: any) =>
+          b.title.localeCompare(a.title)
+        );
+        setPodcasts(sortZA);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [click]);
 
   return (
     <Context.Provider value={[context, setContext]}>

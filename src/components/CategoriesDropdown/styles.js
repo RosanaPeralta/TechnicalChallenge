@@ -4,29 +4,27 @@ import { MenuItem as BaseMenuItem } from "@mui/base/MenuItem";
 import { Menu } from "@mui/base/Menu";
 
 export const MenuItem = styled(BaseMenuItem)(
-  ({ theme }) => `
-    list-style: none;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
-    font-size: 14px;
-    padding: 10px;
-    cursor: pointer;
-    background-color: white;
-    &:last-of-type {
-      border-bottom: none;
-    }
-    `
+  () => `
+  list-style: none;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: white;
+  &:last-of-type {
+    border-bottom: none;
+  }`
 );
 
 export const MenuStyled = styled(Menu)(
-  ({ theme }) => `
-    border-radius: 40%;
-    border: solid 1px red
-    color: red;
-    `
+  () => `
+  border-radius: 40%;
+  border: solid 1px red
+  color: red;`
 );
 
 export const MenuButton = styled(BaseMenuButton)(
-  ({ theme }) => `
+  () => `
   font-size: 14px;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   line-height: 1.5;
@@ -38,5 +36,5 @@ export const MenuButton = styled(BaseMenuButton)(
   background-color: transparent;
   text-transform: uppercase;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    `
+  `
 );

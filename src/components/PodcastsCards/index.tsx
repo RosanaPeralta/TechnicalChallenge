@@ -5,9 +5,7 @@ import {
   StyledTypography,
   StyledCardActions,
 } from "./styles";
-import { PodcastInformation, PodcastInformationList} from "../../interfaces";
-
-
+import { PodcastInformation } from "../../interfaces";
 
 const PodcastsCards = ({ podcasts }: any) => {
   return (
@@ -47,8 +45,8 @@ const PodcastsCards = ({ podcasts }: any) => {
                     href={elem.url}
                     rel="noopener"
                     fontFamily={'"Roboto","Helvetica","Arial"'}
-                    textTransform={'uppercase'}
-                    color={'#9896f0'}
+                    textTransform={"uppercase"}
+                    color={"#9896f0"}
                   >
                     Access to the RSS
                   </Link>

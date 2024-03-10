@@ -69,7 +69,7 @@ const Navbar = ({
                 value={searchPodcast}
                 onChange={handleChange}
               />
-              <IconButton onClick={() => handleSearch(searchPodcast)}>
+              <IconButton onClick={handleSearch}>
                 <SearchIcon sx={{ color: "white" }} />
               </IconButton>
             </Search>
