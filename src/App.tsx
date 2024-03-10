@@ -12,13 +12,18 @@ const App = () => {
   const [categories, setCategories] = useState<any>({});
   const [searchPodcast, setSearchPodcast] = useState<string>("");
 
+  const listCategories = () => {
+    let categories: CategoriesInterface = {};
+    const listCategories = context.map((elem: any) => elem.categories);
+    listCategories.forEach((elem: any) => Object.assign(categories, elem));
+    return categories;
+  };
   useEffect(() => {
-    let obj: CategoriesInterface = {};
-    const listCategories = podcasts.map((elem: any) => elem.categories);
-    listCategories.forEach((elem: any) => Object.assign(obj, elem));
-    setCategories(obj);
+    setTimeout(() => {
+      setCategories(listCategories());
+    }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [categories]);
 
   const handleClick = () => {
     click === undefined ? setClick(true) : setClick(!click);
@@ -56,15 +61,15 @@ const App = () => {
   useEffect(() => {
     if (click != null) {
       if (click) {
-        let sortAZ = context.sort((a: any, b: any) =>
-          a.title.localeCompare(b.title)
-        );
-        setPodcasts(sortAZ);
-      } else {
         let sortZA = context.sort((a: any, b: any) =>
           b.title.localeCompare(a.title)
         );
         setPodcasts(sortZA);
+      } else {
+        let sortAZ = context.sort((a: any, b: any) =>
+          a.title.localeCompare(b.title)
+        );
+        setPodcasts(sortAZ);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -28,8 +28,8 @@ const PodcastsCards = ({ podcasts }: any) => {
                 />
                 <CardContent>
                   <StyledTypography gutterBottom>
-                    {elem.title.length > 38
-                      ? elem.title.slice(0, 38) + "..."
+                    {elem.title.length > 30
+                      ? elem.title.slice(0, 30) + "..."
                       : elem.title}
                   </StyledTypography>
                   <Typography variant="body2" color="text.secondary">
