@@ -27,14 +27,16 @@ export const MenuStyled = styled(Menu)(
 
 export const MenuButton = styled(BaseMenuButton)(
   ({ theme }) => `
-    font-size: 0.875rem;
-    line-height: 1.5;
-    padding: 8px 16px;
-    border: solid 1px #FFF;
-    border-radius:10%;
-    color: white;
-    cursor: pointer;
-    background-color: transparent;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  font-size: 14px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  line-height: 1.5;
+  padding: 8px 16px;
+  border: solid 1px #FFF;
+  border-radius: 10%;
+  color: white;
+  cursor: pointer;
+  background-color: transparent;
+  text-transform: uppercase;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     `
 );

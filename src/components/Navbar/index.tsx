@@ -37,7 +37,7 @@ const Navbar = ({
     <Grid container spacing={1} direction="row">
       <AppBar position="static" sx={{ backgroundColor: "#9896f0" }}>
         <Toolbar>
-          <Grid container item spacing={0}  mt={1}>
+          <Grid container item spacing={0} mt={1}>
             <Box
               sx={{
                 display: "flex",
@@ -61,7 +61,7 @@ const Navbar = ({
               />
             </Box>
           </Grid>
-          <Grid container item spacing={0}  mt={1}>
+          <Grid container item spacing={0} mt={1}>
             <Search>
               <StyledInputBase
                 placeholder="Search…"
@@ -74,22 +74,24 @@ const Navbar = ({
               </IconButton>
             </Search>
           </Grid>
-          <Grid container item spacing={0} display={'flex'} justifyContent={'flex-end'} mt={1}>
-            <IconButton color="inherit" aria-label="open drawer">
+          <Grid
+            container
+            item
+            spacing={0}
+            display={"flex"}
+            justifyContent={"flex-end"}
+            mt={1}
+          >
+            <Box mr={2}>
               <CategoriesDropdown
                 podcasts={podcasts}
                 createHandleMenuClick={createHandleMenuClick}
                 categories={categories}
               />
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-            >
+            </Box>
+            <Box>
               <SortAlphabetical handleClick={handleClick} click={click} />
-            </IconButton>
+            </Box>
           </Grid>
         </Toolbar>
       </AppBar>
